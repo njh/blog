@@ -12,7 +12,7 @@ end
 
 desc "Upload the files in _site to the public webserver"
 task :upload => :build do
-  sh "rsync -a _site/ njh@www.aelius.com:~/public_html/"
+  sh "rsync -avz _site/ njh@www.aelius.com:~/public_html/"
 end
 
 desc "Deleted all the generated files (based on .gitignore)"
