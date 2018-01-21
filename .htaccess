@@ -1,0 +1,4 @@
+RewriteEngine On
+
+# Allow no .html
+RewriteRule ^/posts/(\d+)$ /posts/$1.html [QSA,L]
