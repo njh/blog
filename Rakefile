@@ -1,5 +1,14 @@
 #!/usr/bin/env ruby
 
+desc "Install and build"
+task default: [:install, :build]
+
+desc "Install gems"
+task :install do
+  sh "bundle config set --local path vendor/bundle"
+  sh "bundle install"
+end
+
 desc "Build the blog using Jekyll"
 task :build do
   sh "bundle exec jekyll build"
@@ -14,6 +23,7 @@ desc "Upload the files in _site to the public webserver"
 task :upload => :build do
   sh "rsync -avz _site/ njh@www.aelius.com:~/public_html/"
 end
+task :publish => :upload
 
 desc "Deleted all the generated files (based on .gitignore)"
 task :clean do
@@ -24,6 +34,3 @@ task :clean do
   end
 end
 
-
-task :default => :build
-task :publish => :upload
