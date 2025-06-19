@@ -11,12 +11,12 @@ end
 
 desc "Build the blog using Jekyll"
 task :build do
-  sh "bundle exec jekyll build"
+  sh "JEKYLL_ENV=production bundle exec jekyll build --trace"
 end
 
 desc "Run a local web server using Jekyll"
 task :server => :build do
-  sh "bundle exec jekyll server"
+  sh "bundle exec jekyll server --trace --livereload"
 end
 
 desc "Upload the files in _site to the public webserver"
