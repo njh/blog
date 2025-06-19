@@ -1,4 +1,18 @@
 RewriteEngine On
 
-# Allow no .html
-RewriteRule ^/posts/(\d+)$ /posts/$1.html [QSA,L]
+# Allow no .html on blog posts
+RewriteRule ^posts/(\d+)$ /posts/$1.html [QSA,L]
+
+# Give them my FOAF file if they want some Turtle
+RewriteCond %{HTTP_ACCEPT} text/turtle
+RewriteRule ^$ http://njh.me/foaf.ttl [R=303,L]
+
+# Give them my FOAF file if they want some RDF/XML
+RewriteCond %{HTTP_ACCEPT} application/rdf\+xml [OR]
+RewriteCond %{HTTP_ACCEPT} text/rdf
+RewriteRule ^$ http://njh.me/foaf.rdf [R=303,L]
+
+RewriteRule ^foaf.rdf$ https://njh.me/foaf.rdf [R=301,L]
+
+# Custom 404 page
+ErrorDocument 404 /njh/404.html
