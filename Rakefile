@@ -21,7 +21,7 @@ end
 
 desc "Upload the files in _site to the public webserver"
 task :upload => :build do
-  sh "rsync -avz _site/ njh@www.aelius.com:~/public_html/"
+  sh "rsync -avz _site/ www.aelius.com:~/www/www.aelius.com/njh/"
 end
 task :publish => :upload
 
