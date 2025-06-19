@@ -18,4 +18,9 @@ group :jekyll_plugins do
   gem "jekyll-feed", "~> 0.12.1"
 end
 
+# These aren't built into newer versions of ruby
+gem "base64", "~> 0.3.0"
+gem "bigdecimal", "~> 3.2.2"
+gem "logger", "~> 1.7.0"
+
 gem "rake"
